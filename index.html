@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jagu Travels</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+
+<header class="header glass">
+    <h1>Tripzy</h1>
+
+    <div class="menu-toggle">☰</div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#destination">Destination</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <button id="themeToggle">🌙</button>
+</header>
+
+<section class="hero">
+    <h2>🌍 Explore the World with Us</h2>
+    <p>Travel beautiful places & unforgettable adventures</p>
+    <a href="#packages" class="btn-primary">Explore 🚀</a>
+</section>
+
+<section id="destination" class="destination scroll">
+    <h2>⭐ Top Destinations</h2>
+
+    <div class="destination-container">
+        <div class="destination-card" style="background-image:url('https://cdn.pixabay.com/photo/2017/03/06/08/26/louvre-palace-2120855_1280.jpg')">
+            <div class="overlay">
+                <h3>Paris</h3>
+                <p>City of Love</p>
+            </div>
+        </div>
+
+        <div class="destination-card" style="background-image:url('https://cdn.pixabay.com/photo/2018/08/01/11/08/boat-3576986_1280.jpg')">
+            <div class="overlay">
+                <h3>Bali</h3>
+                <p>Tropical Paradise</p>
+            </div>
+        </div>
+
+        <div class="destination-card" style="background-image:url('https://cdn.pixabay.com/photo/2022/04/18/02/24/architecture-7139263_1280.jpg')">
+            <div class="overlay">
+                <h3>Canada</h3>
+                <p>Nature & Adventure</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="packages" class="packages scroll">
+    <h2>🎁 Exclusive Packages</h2>
+
+    <div class="packages-list">
+        <div class="package-card glass">✨ Weekend Party</div>
+        <div class="package-card glass">🌴 Beach Vibes</div>
+        <div class="package-card glass">🏞️ Adventure Trek</div>
+    </div>
+</section>
+
+<section id="contact" class="contact scroll">
+    <h2>📞 Contact Us</h2>
+
+    <form class="contact-form glass">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button class="btn-primary">Send Message</button>
+    </form>
+</section>
+
+<script>
+/* MOBILE MENU */
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav-links');
+toggle.onclick = () => nav.classList.toggle('active');
+
+/* DARK MODE */
+const themeBtn = document.getElementById("themeToggle");
+themeBtn.onclick = () => {
+    document.body.classList.toggle("dark");
+    themeBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+};
+
+/* GSAP ANIMATIONS */
+gsap.from(".header", { y:-100, opacity:0, duration:1 });
+gsap.from(".hero h2", { y:50, opacity:0, delay:0.5 });
+gsap.from(".hero p", { y:50, opacity:0, delay:0.8 });
+gsap.from(".btn-primary", { scale:0, delay:1 });
+
+gsap.from(".destination-card", {
+    scrollTrigger: ".destination",
+    opacity:0,
+    y:50,
+    stagger:0.2
+});
+
+gsap.from(".package-card", {
+    scrollTrigger: ".packages",
+    opacity:0,
+    y:40,
+    stagger:0.2
+});
+</script>
+
+</body>
+</html>
